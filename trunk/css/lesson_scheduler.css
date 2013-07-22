@@ -1,0 +1,90 @@
+/* ステータスメニュー用 
+-------------------------------------------------------------- */
+.lesson_scheduler{
+	display: block;
+}
+
+/* lesson schadule
+----------------------------------------------- */
+table.tablesorter-1 {
+	font-family:arial;
+	margin:10px 0pt 15px;
+	padding: 5px;
+	font-size: 0.8em !important;
+	width: 100%;
+	text-align: left;
+	border: 1px solid #d0ccc9;
+}
+
+table.tablesorter-1 thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 2px !important;
+}
+table.tablesorter-1 thead tr .header {
+	background-image: url(../image/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter-1 tbody td {
+	color: #3D3D3D;
+	padding: 2px !important;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter-1 tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter-1 thead tr .headerSortUp {
+	background-image: url(../image/asc.gif);
+}
+table.tablesorter-1 thead tr .headerSortDown {
+	background-image: url(../image/desc.gif);
+}
+table.tablesorter-1 thead tr .headerSortDown, table.tablesorter-1 thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
+table.tablesorter-2 {
+	font-family:arial;
+	margin:10px 0pt 15px;
+	padding: 5px;
+	font-size: 0.8em !important;
+	width: 100%;
+	text-align: left;
+	border: 1px solid #d0ccc9;
+}
+
+table.tablesorter-2 thead tr th, table.tablesorter tfoot tr th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	padding: 2px !important;
+}
+table.tablesorter-2 thead tr .header {
+	background-image: url(../image/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter-2 tbody td {
+	color: #3D3D3D;
+	padding: 2px !important;
+	background-color: #FFF;
+	vertical-align: top;
+}
+table.tablesorter-2 tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+table.tablesorter-2 thead tr .headerSortUp {
+	background-image: url(../image/asc.gif);
+}
+table.tablesorter-2 thead tr .headerSortDown {
+	background-image: url(../image/desc.gif);
+}
+table.tablesorter-2 thead tr .headerSortDown, table.tablesorter-2 thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+
