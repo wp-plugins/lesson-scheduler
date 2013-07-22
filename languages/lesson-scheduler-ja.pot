@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-17 23:32+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:119
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:250
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:253
+msgid "lesson date"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:125
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:250
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:253
+msgid "lesson place"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:139
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:250
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:253
+msgid "lesson time"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:154
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:250
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:253
+msgid "remarks"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:220
+msgid "NOT FOUND"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:231
+msgid "others status"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:243
+msgid "your status"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:251
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:341
+msgid "reply"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:25
+msgid "set lesson place"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:34
+msgid "set lesson time"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:42
+msgid "set option"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:44
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:46
+msgid "auto title"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:50
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:52
+msgid "print past schedules"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler_options.php:60
+msgid "Save Changes"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:351
+msgid "<span class=\"meta-nav\">&larr;</span> Older lessons"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:352
+msgid "Newer lessons <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:517
+msgid "Could not update post in the database"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:96
+msgid "Setting lesson Schedule"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:373
+msgid "attend"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:375
+msgid "absence"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:377
+msgid "late"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:379
+msgid "early"
+msgstr ""
+
+#: C:\Users\teru\Desktop\stepxstep\wp-content\plugins\lesson-scheduler\lesson_scheduler.php:381
+msgid "undecided"
+msgstr ""
+
