@@ -1,4 +1,4 @@
-=== Lesson Scheduler ===
+﻿=== Lesson Scheduler ===
 Contributors: Teruo Morimoto
 Tags: lesson, practice, WindBand, Orchestra, footballTeam;
 Requires at least: 3.0
@@ -6,7 +6,7 @@ Tested up to: 3.1.4
 Stable tag: 1.0.0
 License: GPLv2
 
-Just another lesson schedule manegement plugin. Simple UI and look.
+Just another lesson schedule management plugin. Simple look and feel.
 
 == Description ==
 You can register the lesson day of your club(music,sports,etc). Member can identify the lesson schedule of other members and register attendance or absence.
