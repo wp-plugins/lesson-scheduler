@@ -1,6 +1,6 @@
 ﻿=== Lesson Scheduler ===
 Contributors: Teruo Morimoto
-Tags: lesson, practice, WindBand, Orchestra, footballTeam;
+Tags: lesson, practice, WindBand, Orchestra, footballTeam,練習,出欠
 Requires at least: 3.0
 Tested up to: 3.1.4
 Stable tag: 1.0.0
