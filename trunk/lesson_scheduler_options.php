@@ -52,6 +52,12 @@
 			<tr><td><input type="checkbox" name="lesson_scheduler_cb_2" value="1" /><?php _e( 'print past schedules','lesson-scheduler') ?></td></tr>
 		<?php endif; ?>
 
+		<?php if( get_option('lesson_scheduler_cb_3') == '1' ) : ?>
+			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" checked="checked"/><?php _e( 'used mobile phone mode','lesson-scheduler') ?></td></tr>
+		<?php else : ?>
+			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" /><?php _e( 'used mobile phone mode','lesson-scheduler') ?></td></tr>
+		<?php endif; ?>
+
 	</table>
 	<input type="hidden" name="action" value="update" />
 	<input type="hidden" name="page_options" value="<?php get_alloption();?>"/>
@@ -63,7 +69,7 @@
 	</form>
 </div>
 <?php }
-
+//オプション用変数をすべてつなげる
 function get_alloption()
 {
 	for( $i=1; $i<=10; $i++ ){
@@ -74,7 +80,7 @@ function get_alloption()
 		$str = $str."lesson_scheduler_time_".$i.",";
 	}
 	
-	$str = $str."lesson_scheduler_cb_1,lesson_scheduler_cb_2";
+	$str = $str."lesson_scheduler_cb_1,lesson_scheduler_cb_2,lesson_scheduler_cb_3";
 	
 	echo $str;
 }

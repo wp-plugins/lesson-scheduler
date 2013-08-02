@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /*
 Plugin Name: Lesson Scheduler
 Plugin URI: 
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/
-Version: 1.0.0
+Version: 1.1.0
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
@@ -26,6 +26,8 @@ Version: 1.0.0
 	//設定画面処理用ファイル読み込み
 	include_once dirname( __FILE__ ) . '/lesson_scheduler_options.php';
 
+	//モバイル処理用ファイル読み込み
+	include_once dirname( __FILE__ ) . '/lesson_scheduler_mobile.php';
 
 /*  カスタム投稿タイプ（lesson scheduler）の登録
 -----------------------------------------------------------*/
@@ -199,7 +201,14 @@ function lesson_schedule_meta_update($post_id){
 -----------------------------------------------------------*/
 add_shortcode('lesson scheduler', 'disp_lesson_scheduler');
 function disp_lesson_scheduler($atts) {
-
+	if( chk_mobile() ){
+		disp_lesson_scheduler_mobile();
+	}
+	else{
+		disp_lesson_scheduler_pc();
+	}
+}
+function disp_lesson_scheduler_pc(){
 	
 	//クエリーによりカスタム投稿読み込み
 	
@@ -223,23 +232,15 @@ function disp_lesson_scheduler($atts) {
 	/* 投稿を巻き戻し */
 	rewind_posts();
 	
-
 ?>
-
 <div class="lesson_scheduler" >
 
 <form action="" method="POST">
-<h3><?php _e('others status','lesson-scheduler'); ?></h3>
 <?php if(  is_user_logged_in() ) : ?>
-	<table border="1" class="tablesorter-1">
-		<?php
-			//全ユーザーの出欠状況を表示
-			dispAllUser(); 
-		 ?>
-	</table>	
+	<h3><?php _e('your status','lesson-scheduler'); ?></h3>
+<?php else : ?>
+	<h3><?php _e('schedule','lesson-scheduler'); ?></h3>
 <?php endif; ?>
-
-<h3><?php _e('your status','lesson-scheduler'); ?></h3>
 <div class="tablelesson-2">
 	<table border="1" class="tablesorter-2">
 		<!-- タイトル行の表示 -->
@@ -339,6 +340,16 @@ function disp_lesson_scheduler($atts) {
 		<input type="submit" name="reply" value=<?php _e('reply','lesson-scheduler'); ?> />
 	<?php endif; ?>
 
+	<?php if(  is_user_logged_in() ) : ?>
+		<h3><?php _e('others status','lesson-scheduler'); ?></h3>
+		<table border="1" class="tablesorter-1">
+			<?php
+				//全ユーザーの出欠状況を表示
+				dispAllUser(); 
+			 ?>
+		</table>	
+	<?php endif; ?>
+
 </div>
 </form>
 
@@ -346,18 +357,16 @@ function disp_lesson_scheduler($atts) {
 <?php  if (  $wp_query->max_num_pages > 1 ) : ?>
 	<br>
 	<div id="nav-below" class="navigation">
-		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older lessons' ),'lesson-scheduler' ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( 'Newer lessons <span class="meta-nav">&rarr;</span>' ),'lesson-scheduler' ); ?></div>
+		<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older lessons' ,'lesson-scheduler' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( 'Newer lessons <span class="meta-nav">&rarr;</span>' ,'lesson-scheduler' ) ); ?></div>
 	</div><!-- #nav-below -->
 	<br>
 <?php endif; ?>
 
-
 </div>
-
 <?php
+
 	wp_reset_query();
-	
 
 }
 
@@ -564,5 +573,19 @@ function myplugin_admin_menu() {
 	echo '<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />'."\n";
 }
 add_action('admin_head', 'myplugin_admin_menu');
+
+/* モバイルかどうかをチェックする 
+-----------------------------------------------------------*/
+function chk_mobile(){
+
+	//モバイルモードを利用しない場合はfalse
+	if( get_option('lesson_scheduler_cb_3') != '1' )return false;
+
+	$mobile = false;
+	if (strpos($_SERVER['HTTP_USER_AGENT'],"iPhone") || strpos($_SERVER['HTTP_USER_AGENT'],"Android") ){
+		$mobile = true;
+	}
+	return $mobile;
+}
 
 ?>
