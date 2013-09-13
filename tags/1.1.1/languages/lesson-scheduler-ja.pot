@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Lesson Scheduler
+# This file is distributed under the same license as the Lesson Scheduler package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-17 23:32+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "lesson date"
+msgstr ""
+
+msgid "lesson place"
+msgstr ""
+
+msgid "lesson time"
+msgstr ""
+
+msgid "remarks"
+msgstr ""
+
+msgid "NOT FOUND"
+msgstr ""
+
+msgid "others status"
+msgstr ""
+
+msgid "your status"
+msgstr ""
+
+msgid "reply"
+msgstr ""
+
+msgid "set lesson place"
+msgstr ""
+
+msgid "set lesson time"
+msgstr ""
+
+msgid "set option"
+msgstr ""
+
+msgid "auto title"
+msgstr ""
+
+msgid "print past schedules"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "<span class=\"meta-nav\">&larr;</span> Older lessons"
+msgstr ""
+
+msgid "Newer lessons <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+msgid "Could not update post in the database"
+msgstr ""
+
+msgid "Setting lesson Schedule"
+msgstr ""
+
+msgid "attend"
+msgstr ""
+
+msgid "absence"
+msgstr ""
+
+msgid "late"
+msgstr ""
+
+msgid "early"
+msgstr ""
+
+msgid "undecided"
+msgstr ""
+
+msgid "schedul"
+msgstr ""
+
+msgid "use the mobile phone mode"
+msgstr ""
+

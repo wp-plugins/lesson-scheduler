@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) Lesson Scheduler
+# This file is distributed under the same license as the Lesson Scheduler package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-17 23:32+0900\n"
+"PO-Revision-Date: 2013-09-14 00:28+0900\n"
+"Last-Translator: Teruo Morimoto <terusun@gmail.com>\n"
+"Language-Team: Teruo Morimoto <terusun@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"Language: japanase\n"
+
+msgid "lesson date"
+msgstr "練習日"
+
+msgid "lesson place"
+msgstr "練習場所"
+
+msgid "lesson time"
+msgstr "練習時間"
+
+msgid "remarks"
+msgstr "備考"
+
+msgid "NOT FOUND"
+msgstr "ページが見つかりませんでした。"
+
+msgid "others status"
+msgstr "他のメンバーの出欠状況"
+
+msgid "your status"
+msgstr "あなたの出欠状況"
+
+msgid "reply"
+msgstr "返信する"
+
+msgid "set lesson place"
+msgstr "練習場所を設定"
+
+msgid "set lesson time"
+msgstr "練習時間を設定"
+
+msgid "set option"
+msgstr "オプションを設定"
+
+msgid "auto title"
+msgstr "タイトルを自動で設定する"
+
+msgid "print past schedules"
+msgstr "過去の練習日も表示する"
+
+msgid "Save Changes"
+msgstr "設定を保存"
+
+msgid "<span class=\"meta-nav\">&larr;</span> Older lessons"
+msgstr "<span class=\"meta-nav\">&larr;</span> 古い練習日"
+
+msgid "Newer lessons <span class=\"meta-nav\">&rarr;</span>"
+msgstr "新しい練習日 <span class=\"meta-nav\">&rarr;</span>"
+
+msgid "Could not update post in the database"
+msgstr "データベースを更新できませんでした。"
+
+msgid "Setting lesson Schedule"
+msgstr "練習日を設定する"
+
+msgid "attend"
+msgstr "出席する"
+
+msgid "absence"
+msgstr "欠席する"
+
+msgid "late"
+msgstr "遅刻する"
+
+msgid "early"
+msgstr "早退する"
+
+msgid "undecided"
+msgstr "未定"
+
+msgid "schedule"
+msgstr "日程一覧"
+
+msgid "use the mobile phone mode"
+msgstr "モバイルモードを使う"
