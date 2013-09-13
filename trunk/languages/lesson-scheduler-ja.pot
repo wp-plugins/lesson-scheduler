@@ -87,3 +87,6 @@ msgstr ""
 msgid "schedul"
 msgstr ""
 
+msgid "use the mobile phone mode"
+msgstr ""
+

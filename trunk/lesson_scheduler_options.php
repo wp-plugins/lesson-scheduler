@@ -53,14 +53,14 @@
 		<?php endif; ?>
 
 		<?php if( get_option('lesson_scheduler_cb_3') == '1' ) : ?>
-			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" checked="checked"/><?php _e( 'used mobile phone mode','lesson-scheduler') ?></td></tr>
+			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" checked="checked"/><?php _e( 'use the mobile phone mode','lesson-scheduler') ?></td></tr>
 		<?php else : ?>
-			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" /><?php _e( 'used mobile phone mode','lesson-scheduler') ?></td></tr>
+			<tr><td><input type="checkbox" name="lesson_scheduler_cb_3" value="1" /><?php _e( 'use the mobile phone mode','lesson-scheduler') ?></td></tr>
 		<?php endif; ?>
 
 	</table>
 	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="page_options" value="<?php get_alloption();?>"/>
+	<input type="hidden" name="page_options" value="<?php lesson_scheduler_get_alloption();?>"/>
 
 	<p class="submit">
 	<input type="submit" class="button-primary" value="<?php _e('Save Changes','lesson-scheduler'); ?>" />
@@ -70,7 +70,7 @@
 </div>
 <?php }
 //オプション用変数をすべてつなげる
-function get_alloption()
+function lesson_scheduler_get_alloption()
 {
 	for( $i=1; $i<=10; $i++ ){
 		$str = $str."lesson_scheduler_place_".$i.",";

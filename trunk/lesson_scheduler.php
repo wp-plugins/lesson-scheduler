@@ -1,11 +1,11 @@
-﻿<?php
+<?php
 /*
 Plugin Name: Lesson Scheduler
 Plugin URI: 
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
-Author URI: http://stepxstep.net/
-Version: 1.1.0
+Author URI: http://stepxstep.net/]
+Version: 1.1.1
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
@@ -201,7 +201,7 @@ function lesson_schedule_meta_update($post_id){
 -----------------------------------------------------------*/
 add_shortcode('lesson scheduler', 'disp_lesson_scheduler');
 function disp_lesson_scheduler($atts) {
-	if( chk_mobile() ){
+	if( lesson_scheduler_chk_mobile() ){
 		disp_lesson_scheduler_mobile();
 	}
 	else{
@@ -548,7 +548,7 @@ add_action('init', 'lesson_scheduler_load_textdomain');
 
 /* scriptの読み込み
 -----------------------------------------------------------*/
-function add_script() {
+function lesson_scheduler_add_script() {
     wp_register_script( 'jquery_1_8_3_js', 'http://code.jquery.com/jquery-1.8.3.js', false );
     wp_register_script( 'jquery_core_js', 'http://code.jquery.com/ui/1.10.3/jquery-ui.js', false );
     wp_register_script( 'tablesorter_js', plugins_url('js/jquery.tablesorter.min.js', __FILE__), false );
@@ -558,25 +558,25 @@ function add_script() {
 	wp_enqueue_script('tablesorter_js');
 	wp_enqueue_script('lesson_scheduler_js');
 }
-add_action('wp_print_scripts','add_script');
+add_action('wp_print_scripts','lesson_scheduler_add_script');
 
 /* cssの読み込み
 -----------------------------------------------------------*/
-function add_styles() {
+function lesson_scheduler_add_styles() {
     wp_register_style( 'lesson_scheduler_css', plugins_url('css/lesson_scheduler.css', __FILE__) );
 	wp_enqueue_style('lesson_scheduler_css');
 }
-add_action('wp_print_styles','add_styles');
+add_action('wp_print_styles','lesson_scheduler_add_styles');
 
 // 管理メニュー初期設定にフック
-function myplugin_admin_menu() {
+function lesson_scheduler_myplugin_admin_menu() {
 	echo '<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />'."\n";
 }
-add_action('admin_head', 'myplugin_admin_menu');
+add_action('admin_head', 'lesson_scheduler_myplugin_admin_menu');
 
 /* モバイルかどうかをチェックする 
 -----------------------------------------------------------*/
-function chk_mobile(){
+function lesson_scheduler_chk_mobile(){
 
 	//モバイルモードを利用しない場合はfalse
 	if( get_option('lesson_scheduler_cb_3') != '1' )return false;
