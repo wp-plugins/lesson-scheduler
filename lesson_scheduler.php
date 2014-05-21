@@ -5,7 +5,7 @@ Plugin URI:
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/]
-Version: 1.1.1
+Version: 1.1.2
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
@@ -35,14 +35,14 @@ add_action('init', 'create_lesson_schedules');
 function create_lesson_schedules(){
 
 	$labels = array(
-		'name' =>  _x('lesson schedules'),
-		'singular_name' =>  _x('lesson schedule'),
+		'name' =>  _x('lesson schedules','lesson schedules'),
+		'singular_name' =>  _x('lesson schedule','lesson schedule'),
 		'add_new' =>  _x('Add New', 'post'),
-		'add_new_item' =>  _x('Add New Post'),
-		'edit_item' => _x('Edit Post'),
-		'new_item' => _x('New Post'),
-		'view_item' => _x('View Post'),
-		'search_items' => _x('Search Posts') 
+		'add_new_item' =>  _x('Add New Post', 'Add New Post'),
+		'edit_item' => _x('Edit Post','Edit Post'),
+		'new_item' => _x('New Post','New Post'),
+		'view_item' => _x('View Post','View Post'),
+		'search_items' => _x('Search Posts','Search Posts') 
 	);
 	
 	//タイトル自動化の場合
@@ -95,7 +95,7 @@ function create_lesson_schedules(){
 function lesson_schedules_meta_box($post){
     add_meta_box(
         'lesson_schedule_meta',
-        _x('Setting lesson Schedule'),
+        _x('Setting lesson Schedule','Setting lesson Schedule'),
         'lesson_schedule_meta_callback',
         'lesson_schedules',
         'normal',
