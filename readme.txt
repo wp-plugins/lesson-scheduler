@@ -3,7 +3,7 @@ Contributors: Teruo Morimoto
 Tags: lesson, practice, WindBand, Orchestra, footballTeam,練習,出欠
 Requires at least: 3.0
 Tested up to: 3.1.4
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2
 
 Just another lesson schedule management plugin. Simple look and feel.
@@ -30,8 +30,11 @@ You can register the lesson day of your club(music,sports,etc). Member can ident
 
 == Changelog ==
 
-= 1.1.2
+= 1.1.3
 Add a 2nd parameter to all _x functions(). 
+
+= 1.1.2
+not release
 
 = 1.1.1
 Add Prefix all private functions. 
