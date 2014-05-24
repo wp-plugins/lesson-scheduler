@@ -5,7 +5,7 @@ Plugin URI:
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/]
-Version: 1.1.3
+Version: 1.1.4
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
@@ -234,8 +234,19 @@ function disp_lesson_scheduler_pc(){
 	
 ?>
 <div class="lesson_scheduler" >
+    
+<?php
+//自分自身のURLを取得する
+if ( isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] == 'on' ){  
+    $protocol = 'https://';  
+}  
+else{  
+    $protocol = 'http://';  
+}  
+$myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+?>
 
-<form action="" method="POST">
+<form action="<?php echo $myurl; ?>" method="POST">
 <?php if(  is_user_logged_in() ) : ?>
 	<h3><?php _e('your status','lesson-scheduler'); ?></h3>
 <?php else : ?>

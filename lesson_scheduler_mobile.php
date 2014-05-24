@@ -26,7 +26,17 @@ function disp_lesson_scheduler_mobile() {
 	rewind_posts();
 
 ?>
-<form action="" method="POST">
+<?php
+//自分自身のURLを取得する
+if ( isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'] == 'on' ){  
+    $protocol = 'https://';  
+}  
+else{  
+    $protocol = 'http://';  
+}  
+$myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+?>
+<form action="<?php echo $myurl; ?>" method="POST">
 <dl>
 	<!-- タイトルの表示 -->
 	<h3><?php _e('schedule','lesson-scheduler') ?></h3>
