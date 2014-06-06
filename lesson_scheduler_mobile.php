@@ -13,7 +13,7 @@ function disp_lesson_scheduler_mobile() {
 	query_posts( "posts_per_page=$lesson_schedule_per_page&paged=$paged&post_type=lesson_schedules&orderby=meta_value&meta_key=lesson_schedule_field1" );
 	
 	global $wp_query;
-	
+/*	
 	//記事があれば投稿データをロード（表示はしない） 
  	if ( have_posts() ){ 
 		the_post(); 
@@ -22,9 +22,9 @@ function disp_lesson_scheduler_mobile() {
 		echo _e('NOT FOUND','lesson-scheduler');
 	}
 
-	/* 投稿を巻き戻し */
+	/* 投稿を巻き戻し *//*
 	rewind_posts();
-
+*/
 ?>
 <?php
 //自分自身のURLを取得する
@@ -162,5 +162,40 @@ function dispAttendUser(){
 
 	echo "●:".$attend." ×:".$absence." △:".$late." □:".$early." ？:".$undecided;	
 }
+
+add_filter( 'posts_orderby','my_posts_orderby_mobile', 10, 2 );
+function my_posts_orderby_mobile( $orderby, $query ) {
+
+    //ポストタイプをチェック
+    if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
+        $buf='DESC';
+        //過去の練習日も表示する
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 1 ){
+            $buf = 'ASC';
+        }
+        $orderby = "concat(right(meta_value,4),left(meta_value,2),mid(meta_value,4,2)) ".$buf;
+        return $orderby;
+    }
+}
+
+
+add_filter( 'posts_where_paged', 'my_post_where_mobile', 10, 2);
+function my_post_where_mobile( $where, $query ) {
+    
+    //ポストタイプをチェック
+    if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
+        //過去の練習日を表示しない
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 1 ){
+            //過去の練習を表示しない場合は、現在の日付以降を取得
+            $today_unix =  date('mdY');
+            $where = $where." AND (concat(right(meta_value,4),mid(meta_value,4,2),left(meta_value,2)) >=".$today_unix.")";
+            return $where;
+        }
+    }
+
+    return $where;
+    
+}
+
 
 ?>

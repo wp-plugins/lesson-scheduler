@@ -5,7 +5,7 @@ Plugin URI:
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/]
-Version: 1.1.4
+Version: 1.1.5
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
@@ -217,11 +217,29 @@ function disp_lesson_scheduler_pc(){
 	
 	//複数ページの場合に、選択されたページを取得
 	$paged = get_query_var('paged');
-	query_posts( "posts_per_page=$lesson_schedule_per_page&paged=$paged&post_type=lesson_schedules&orderby=meta_value&meta_key=lesson_schedule_field1" );
+    //過去ページを出さない場合は、昇順ソード
+/*    
+    if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 0 ){
+        $today = date('Ymd');
+        $where = 'order=ASC';
+    }
+    else{
+        $where = 'order=DESC';
+    }
+        
+	query_posts( "posts_per_page=$lesson_schedule_per_page&paged=$paged&post_type=lesson_schedules&orderby=concat(right(meta_value,4),left(meta_value,2),mid(meta_value,4,2))&meta_key=lesson_schedule_field1&$where" );
+*/
+	//1度に10件表示
+	$lesson_schedule_per_page = 10;
 	
+	//複数ページの場合に、選択されたページを取得
+	$paged = get_query_var('paged');
+	query_posts( "posts_per_page=$lesson_schedule_per_page&paged=$paged&post_type=lesson_schedules&orderby=meta_value&meta_key=lesson_schedule_field1" );
+    
 	global $wp_query;
 	
 	//記事があれば投稿データをロード（表示はしない） 
+    /*
  	if ( have_posts() ){ 
 		the_post(); 
 	}
@@ -229,9 +247,9 @@ function disp_lesson_scheduler_pc(){
 		echo _e('NOT FOUND','lesson-scheduler');
 	}
 
-	/* 投稿を巻き戻し */
+	/* 投稿を巻き戻し *//*
 	rewind_posts();
-	
+	*/
 ?>
 <div class="lesson_scheduler" >
     
@@ -348,7 +366,7 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
     <?php if(  is_user_logged_in() ) : ?>
 		<!-- 出欠ボタン -->
-		<input type="submit" name="reply" value=<?php _e('reply','lesson-scheduler'); ?> />
+		<input type="submit" name="reply" value="<?php _e('reply','lesson-scheduler'); ?>" />
 	<?php endif; ?>
 
 	<?php if(  is_user_logged_in() ) : ?>
@@ -597,6 +615,40 @@ function lesson_scheduler_chk_mobile(){
 		$mobile = true;
 	}
 	return $mobile;
+}
+
+add_filter( 'posts_orderby','my_posts_orderby', 10, 2 );
+function my_posts_orderby( $orderby, $query ) {
+
+    //ポストタイプをチェック
+    if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
+        $buf='ASC';
+        //過去の練習日も表示する
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') == 0 ){
+            $buf = 'DESC';
+        }
+        $orderby = "concat(right(meta_value,4),left(meta_value,2),mid(meta_value,4,2)) ".$buf;
+        return $orderby;
+    }
+}
+
+
+add_filter( 'posts_where_paged', 'my_post_where', 10, 2);
+function my_post_where( $where, $query ) {
+    
+    //ポストタイプをチェック
+    if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
+        //過去の練習日を表示しない
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 0 ){
+            //過去の練習を表示しない場合は、現在の日付以降を取得
+            $today_unix =  date('Y-m-d');
+            $where = $where.' AND (concat(right(meta_value,4),"-",left(meta_value,2),"-",mid(meta_value,4,2)) >="'.$today_unix.'")';
+            return $where;
+        }
+    }
+
+    return $where;
+    
 }
 
 ?>
