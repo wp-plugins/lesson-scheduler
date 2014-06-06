@@ -170,7 +170,7 @@ function my_posts_orderby_mobile( $orderby, $query ) {
     if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
         $buf='DESC';
         //過去の練習日も表示する
-        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 1 ){
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') == 0 ){
             $buf = 'ASC';
         }
         $orderby = "concat(right(meta_value,4),left(meta_value,2),mid(meta_value,4,2)) ".$buf;
@@ -185,10 +185,10 @@ function my_post_where_mobile( $where, $query ) {
     //ポストタイプをチェック
     if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
         //過去の練習日を表示しない
-        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 1 ){
+        if( strcmp(get_option('lesson_scheduler_cb_2'),'1') != 0 ){
             //過去の練習を表示しない場合は、現在の日付以降を取得
-            $today_unix =  date('mdY');
-            $where = $where." AND (concat(right(meta_value,4),mid(meta_value,4,2),left(meta_value,2)) >=".$today_unix.")";
+            $today_unix =  date('Y-m-d');
+            $where = $where.' AND (concat(right(meta_value,4),"-",left(meta_value,2),"-",mid(meta_value,4,2)) >="'.$today_unix.'")';
             return $where;
         }
     }
