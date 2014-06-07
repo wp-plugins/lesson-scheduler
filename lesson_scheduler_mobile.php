@@ -166,6 +166,9 @@ function dispAttendUser(){
 add_filter( 'posts_orderby','my_posts_orderby_mobile', 10, 2 );
 function my_posts_orderby_mobile( $orderby, $query ) {
 
+    //管理ページは無視
+    if( is_admin( ) ) return;
+    
     //ポストタイプをチェック
     if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
         $buf='DESC';
@@ -181,6 +184,9 @@ function my_posts_orderby_mobile( $orderby, $query ) {
 
 add_filter( 'posts_where_paged', 'my_post_where_mobile', 10, 2);
 function my_post_where_mobile( $where, $query ) {
+    
+    //管理ページは無視
+    if( is_admin( ) ) return $where;
     
     //ポストタイプをチェック
     if(isset($query->query_vars['post_type']) & strcmp($query->query_vars['post_type'],'lesson_schedules')==0){
