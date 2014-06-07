@@ -5,7 +5,7 @@ Plugin URI:
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/]
-Version: 1.1.5
+Version: 1.1.6
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
