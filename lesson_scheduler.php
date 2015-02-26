@@ -1,11 +1,11 @@
-<?php
+﻿<?php
 /*
 Plugin Name: Lesson Scheduler
 Plugin URI: 
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
 Author URI: http://stepxstep.net/
-Version: 1.1.6
+Version: 1.1.7
 */
 
 /*  Copyright 2013 Teruo Mormoto (email : terusun at gmail.com)
