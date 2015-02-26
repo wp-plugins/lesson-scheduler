@@ -4,7 +4,7 @@ Plugin Name: Lesson Scheduler
 Plugin URI: 
 Description: Just another lesson schedule manegement plugin. Simple UI and look.
 Author: Teruo Morimoto
-Author URI: http://stepxstep.net/]
+Author URI: http://stepxstep.net/
 Version: 1.1.6
 */
 
@@ -271,12 +271,12 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	<h3><?php _e('schedule','lesson-scheduler'); ?></h3>
 <?php endif; ?>
 <div class="tablelesson-2">
-	<table border="1" class="tablesorter-2">
+	<table class="lesson_scheduler_table">
 		<!-- タイトル行の表示 -->
 		<thead>
 		<?php if(  is_user_logged_in() ) : ?>
 			<tr><th><?php _e('lesson date','lesson-scheduler') ?></th><th><?php _e('lesson place','lesson-scheduler') ?></th><th><?php _e('lesson time','lesson-scheduler') ?></th><th><?php _e('remarks','lesson-scheduler') ?></th>
-			<th><?php _e('reply','lesson-scheduler') ?></th></tr>
+			<th><?php _e('reply','lesson-scheduler') ?></th><th><?php _e('comment','lesson-scheduler') ?></th></tr>
 		<?php else :?>
 			<tr><th><?php _e('lesson date','lesson-scheduler') ?></th><th><?php _e('lesson place','lesson-scheduler') ?></th><th><?php _e('lesson time','lesson-scheduler') ?></th><th><?php _e('remarks','lesson-scheduler') ?></th></tr>
 		<?php endif; ?>
@@ -294,6 +294,8 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 					if ($_POST['syuketu'.get_the_ID()] != '' && strcmp( $_POST['id'.get_the_ID()], get_the_ID()) == 0 ) {
 						delete_post_meta( get_the_ID(),  $cu->user_login ); 
 						update_post_meta( get_the_ID(),  $cu->user_login, $_POST['syuketu'.get_the_ID()]);
+						delete_post_meta( get_the_ID(),  $cu->user_login."1" ); 
+						update_post_meta( get_the_ID(),  $cu->user_login."1", $_POST['comment'.get_the_ID()]);
 					}
 				?>
 
@@ -313,7 +315,7 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 							if( $lesson_date_unix < $today_unix )continue;
 						}
 				    
-			    		echo '<tr><td>';
+			    		echo '<tr><td  data-id="'.get_the_ID().'" data-path="'.get_bloginfo('url').'">';
 						echo  date("Y/m/d",strtotime($lesson_date[0]));
 						echo '(';
 						echo strftime( '%a', strtotime( $lesson_date[0] ) );
@@ -353,8 +355,11 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 						<select name="syuketu<?php echo get_the_ID() ?>" size="1">
 						<?php echo selectReply( get_the_ID(), $cu ); ?>
 						</select>
-
 						<input type="hidden" readonly="readonly" name="id<?php echo get_the_ID() ?>" value="<?php echo get_the_ID() ?>" />
+					</td>
+			    	<!--出欠状況 -->
+				    <td>
+                        <input type="text" name="comment<?php echo get_the_ID()?>" value="<?php 	echo get_post_meta(get_the_ID(), $cu->user_login."1", true) ?> " >
 					</td>
 				<?php endif; ?>
 				<?php echo '</tr>'; ?>
@@ -366,12 +371,12 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
     <?php if(  is_user_logged_in() ) : ?>
 		<!-- 出欠ボタン -->
-		<input type="submit" name="reply" value="<?php _e('reply','lesson-scheduler'); ?>" />
+		<input type="submit" value="<?php _e('reply','lesson-scheduler'); ?>" />
 	<?php endif; ?>
 
 	<?php if(  is_user_logged_in() ) : ?>
 		<h3><?php _e('others status','lesson-scheduler'); ?></h3>
-		<table border="1" class="tablesorter-1">
+		<table class="lesson_scheduler_table">
 			<?php
 				//全ユーザーの出欠状況を表示
 				dispAllUser(); 
@@ -381,6 +386,9 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 </div>
 </form>
+<div id="dialog" title="lesson_scheduler">
+    <p id="lesson_scheduler_dialog"></p>
+</div>
 
 <!-- 前の記事と後の記事へのリンクを表示 -->
 <?php  if (  $wp_query->max_num_pages > 1 ) : ?>
@@ -594,6 +602,7 @@ add_action('wp_print_scripts','lesson_scheduler_add_script');
 function lesson_scheduler_add_styles() {
     wp_register_style( 'lesson_scheduler_css', plugins_url('css/lesson_scheduler.css', __FILE__) );
 	wp_enqueue_style('lesson_scheduler_css');
+	echo '<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />'."\n";
 }
 add_action('wp_print_styles','lesson_scheduler_add_styles');
 
@@ -656,5 +665,80 @@ function my_post_where( $where, $query ) {
     return $where;
     
 }
+
+add_action('wp_ajax_get_lesson_detail', 'get_lesson_detail');
+function get_lesson_detail(){
+
+	$id = $_POST['data-id'];
+	$retjson = array();
+	
+
+	$lesson_date = get_post_custom_values('lesson_schedule_field1',$id);
+	$retjson['lesson_date'] =  date("m/d",strtotime($lesson_date[0]));
+	
+	/* lesson_timeをキーとして、練習時間を取得 */
+    $lesson_time = get_post_custom_values('lesson_schedule_field3',$id);
+    if( $lesson_time  ){
+    	$retjson['lesson_time'] = $lesson_time[0];
+    }
+	/* lesson_placeをキーとして、練習場所を取得 */
+    $lesson_place = get_post_custom_values('lesson_schedule_field2',$id);
+    if( $lesson_place  ){
+    	$retjson['lesson_place'] = $lesson_place[0];
+    }
+	/* lesson_descをキーとして、練習場所を取得 */
+    $lesson_desc = get_post_custom_values('lesson_schedule_field4',$id);
+    if( $lesson_desc  ){
+    	$retjson['lesson_desc'] = $lesson_desc[0];
+    }
+    
+    $retjson['user_status'] = dispScheduleDetail( $id );
+    $retjson['id'] = $id;
+    
+    header('Content-Type: application/json charset=utf-8');
+    echo json_encode($retjson);
+    die();
+}
+
+function dispScheduleDetail( $id ){
+	//全ユーザー情報の取得
+	$users = get_users_of_blog();
+
+	$user_status = array();		
+    
+	foreach ( $users as $users ){
+
+		//ニックネーム出力
+		$nicname =  get_the_author_meta('nickname', $users->user_id);
+
+		//出欠状況の出力
+		$value = get_post_meta($id, $users->user_login, true);
+		if( strcmp($value,"attend") == 0 ){
+			$status = '●';	//出席
+		}elseif( strcmp($value,"absence") == 0 ){
+			$status = '×';	//欠席
+		}elseif( strcmp($value,"late") == 0 ){
+			$status = '△';	//遅刻
+		}elseif( strcmp($value,"early") == 0 ){
+			$status = '□';	//早退
+		}elseif( strcmp($value,"undecided") == 0 ){
+			$status = '？';	//未定
+		}else{
+			$status = '-----';	//未選択
+		}
+		
+
+		$comment = get_post_meta($id, $users->user_login."1", true);
+        $val = array();
+        $val['status'] = $status;
+        $val['comment'] = $comment;
+        $user_status[$nicname] = $val;
+        
+	}
+    
+	return $user_status;
+	
+}
+
 
 ?>

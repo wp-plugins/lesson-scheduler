@@ -52,13 +52,16 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 		if ($_POST['syuketu'.get_the_ID()] != '' && strcmp( $_POST['id'.get_the_ID()], get_the_ID()) == 0 ) {
 			delete_post_meta( get_the_ID(),  $cu->user_login ); 
 			update_post_meta( get_the_ID(),  $cu->user_login, $_POST['syuketu'.get_the_ID()]);
+            delete_post_meta( get_the_ID(),  $cu->user_login."1" ); 
+            update_post_meta( get_the_ID(),  $cu->user_login."1", $_POST['comment'.get_the_ID()]);
 		}
+        
 
+        echo "<div class='lesson_scheduler_mobile'  data-id='".get_the_ID()."' data-path='".get_bloginfo('url')."'>";
 		$post = get_post($post_id);
 		/* lesson_dateをキーとして、練習日を取得 */
 	    $lesson_date = get_post_custom_values('lesson_schedule_field1',$post->ID);
 	    if( $lesson_date  ){
-
 			echo  date("y/m/d",strtotime($lesson_date[0]));
 			echo '(';
 			echo strftime( '%a', strtotime( $lesson_date[0] ) );
@@ -86,30 +89,34 @@ $myurl  = $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 	    	echo( '<br>');
 		}
 		
+        echo '</div><div class="lesson_scheduler_mobile_input">';
+        
 	    ?><?php if(  is_user_logged_in() ) : ?>
 	    	<!--出欠状況 -->
-		    <td>
-				<select name="syuketu<?php echo get_the_ID() ?>" size="1">
-				<?php echo selectReply( get_the_ID(), $cu ); ?>
-				</select>
+            <select name="syuketu<?php echo get_the_ID() ?>" size="1">
+            <?php echo selectReply( get_the_ID(), $cu ); ?>
+            </select>
 
-				<input type="hidden" readonly="readonly" name="id<?php echo get_the_ID() ?>" value="<?php echo get_the_ID() ?>" />
-			</td>
+            <input type="hidden" readonly="readonly" name="id<?php echo get_the_ID() ?>" value="<?php echo get_the_ID() ?>" />
+            <input type="text" name="comment<?php echo get_the_ID()?>" value="<?php 	echo get_post_meta(get_the_ID(), $cu->user_login."1", true) ?> " ><BR>
 		<?php endif; ?><?php
 
 		//出席人数表示
 		dispAttendUser();
 
-	    echo('<hr>');
+	    echo('<hr></div>');
 
 	} ?>
 
     <?php if(  is_user_logged_in() ) : ?>
 		<!-- 出欠ボタン -->
-		<BR><input type="submit" name="reply" value=<?php _e('reply','lesson-scheduler'); ?> /><BR>
+		<BR><input type="submit" value=<?php _e('reply','lesson-scheduler'); ?> /><BR>
 	<?php endif; ?>
 
-
+<div id="dialog" title="lesson_scheduler">
+    <p id="lesson_scheduler_dialog"></p>
+</div>
+        
 <!-- 前の記事と後の記事へのリンクを表示 -->
 <?php
 

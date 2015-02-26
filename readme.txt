@@ -2,8 +2,8 @@
 Contributors: Teruo Morimoto
 Tags: lesson, practice, WindBand, Orchestra, footballTeam,練習,出欠
 Requires at least: 3.0
-Tested up to: 3.1.4
-Stable tag: 1.1.6
+Tested up to: 4.1.1
+Stable tag: 1.1.7
 License: GPLv2
 
 Just another lesson schedule management plugin. Simple look and feel.
@@ -29,6 +29,10 @@ You can register the lesson day of your club(music,sports,etc). Member can ident
 5. A pages sample for mobile( ex.WPtouch ).
 
 == Changelog ==
+
+= 1.1.7
+Add comment for your reply.
+Add detail page by day.
 
 = 1.1.6
 Fixed a bug is not displayed on a dashboard. 
