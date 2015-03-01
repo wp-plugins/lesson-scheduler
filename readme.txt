@@ -30,6 +30,9 @@ You can register the lesson day of your club(music,sports,etc). Member can ident
 
 == Changelog ==
 
+= 1.1.8
+Modify table style.
+
 = 1.1.7
 Add comment for your reply.
 Add detail page by day.
