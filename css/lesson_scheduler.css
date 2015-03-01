@@ -1,4 +1,4 @@
-/* ステータスメニュー用 
+/* teble
 -------------------------------------------------------------- */
 .lesson_scheduler{
 	display: block;
@@ -6,87 +6,15 @@
 
 /* lesson schadule
 ----------------------------------------------- */
-table.tablesorter-1 {
-	font-family:arial;
-	margin:10px 0pt 15px;
-	padding: 5px;
-	font-size: 0.8em !important;
-	width: 100%;
-	text-align: left;
-	border: 1px solid #d0ccc9;
-}
+table { border:0; border-spacing:0; border-collapse:collapse; width:95%; background:#fff; margin-bottom:20px; }
+th,td { font-size:12px; margin:0; padding:0; line-height:1.5; font-weight:normal; padding:5px !important; }
+th { font-size:14px; }
 
-table.tablesorter-1 thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
-	border: 1px solid #FFF;
-	font-size: 8pt;
-	padding: 2px !important;
-}
-table.tablesorter-1 thead tr .header {
-	background-image: url(../image/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	cursor: pointer;
-}
-table.tablesorter-1 tbody td {
-	color: #3D3D3D;
-	padding: 2px !important;
-	background-color: #FFF;
-	vertical-align: top;
-}
-table.tablesorter-1 tbody tr.odd td {
-	background-color:#F0F0F6;
-}
-table.tablesorter-1 thead tr .headerSortUp {
-	background-image: url(../image/asc.gif);
-}
-table.tablesorter-1 thead tr .headerSortDown {
-	background-image: url(../image/desc.gif);
-}
-table.tablesorter-1 thead tr .headerSortDown, table.tablesorter-1 thead tr .headerSortUp {
-background-color: #8dbdd8;
-}
+.lesson_scheduler_table  { }
+.lesson_scheduler_table  th { color:#039; padding:10px 8px; border-bottom:2px solid #6678b1; }
+.lesson_scheduler_table  td {     color:#669; padding:9px 8px 0px 8px; }
+.lesson_scheduler_table  tbody tr:hover td { color:#009; background-color:lightskyblue; }
 
-table.tablesorter-2 {
-	font-family:arial;
-	margin:10px 0pt 15px;
-	padding: 5px;
-	font-size: 0.8em !important;
-	width: 100%;
-	text-align: left;
-	border: 1px solid #d0ccc9;
-}
-
-table.tablesorter-2 thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
-	border: 1px solid #FFF;
-	font-size: 8pt;
-	padding: 2px !important;
-}
-table.tablesorter-2 thead tr .header {
-	background-image: url(../image/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	cursor: pointer;
-}
-table.tablesorter-2 tbody td {
-	color: #3D3D3D;
-	padding: 2px !important;
-	background-color: #FFF;
-	vertical-align: top;
-}
-table.tablesorter-2 tbody tr.odd td {
-	background-color:#F0F0F6;
-}
-table.tablesorter-2 thead tr .headerSortUp {
-	background-image: url(../image/asc.gif);
-}
-table.tablesorter-2 thead tr .headerSortDown {
-	background-image: url(../image/desc.gif);
-}
-table.tablesorter-2 thead tr .headerSortDown, table.tablesorter-2 thead tr .headerSortUp {
-background-color: #8dbdd8;
-}
 
 /* Navigation
 -------------------------------------------------------------- */
@@ -129,4 +57,12 @@ background-color: #8dbdd8;
 	margin-top: 20;
 }
 
+.lesson_scheduler_mobile{
+    display:block;
+    margin:10px;
+}
 
+.lesson_scheduler_mobile_input{
+    display:block;
+    margin:10px;
+}
