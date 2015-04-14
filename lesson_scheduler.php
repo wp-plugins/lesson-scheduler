@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /*
 Plugin Name: Lesson Scheduler
 Plugin URI: 
