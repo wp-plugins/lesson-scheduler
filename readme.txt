@@ -30,6 +30,9 @@ You can register the lesson day of your club(music,sports,etc). Member can ident
 
 == Changelog ==
 
+= 1.1.10
+Fixed a bug that a sort of admin page article.
+
 = 1.1.9
 Fixed a bug when to activate this.
 
