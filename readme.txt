@@ -3,7 +3,7 @@ Contributors: Teruo Morimoto
 Tags: lesson, practice, WindBand, Orchestra, footballTeam,練習,出欠
 Requires at least: 3.0
 Tested up to: 4.1.1
-Stable tag: 1.1.9
+Stable tag: 1.1.10
 License: GPLv2
 
 Just another lesson schedule management plugin. Simple look and feel.
